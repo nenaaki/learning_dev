@@ -1,62 +1,86 @@
 import { PrismaClient, Prisma } from '@prisma/client'
 
 const prisma = new PrismaClient()
+const now = new Date()
 
-const userData: Prisma.UserCreateInput[] = [
-  {
-    name: 'Alice',
-    email: 'alice@prisma.io',
-    posts: {
-      create: [
-        {
-          title: 'Join the Prisma Slack',
-          content: 'https://slack.prisma.io',
-          published: true,
+const orderData: Prisma.OrderCreateInput[] = [
+ {
+   totalPrice: 1000,
+   createDate: now,
+   status: '完了',
+   amount: 2,
+   user: {
+    create: {
+      userName: 'testUserName_1',
+	    email: 'testEmail_1',
+	    authority: 0,
+	    password: 'testPassword_1',
+    }
+   },
+   item: {
+    create: {
+      itemName: 'testItemName_1',
+      detail: 'testDetail_1',
+      price: 500,
+      shop: {
+        create: {
+          shopName: 'testshopName_1',
+          admin: {
+            create: {
+              userName: 'testUserName_2',
+              email: 'testEmail_2',
+              authority: 1,
+              password: 'testPassword_2',
+            }
+          },
         },
-      ],
+      },
     },
+   },
+ },
+ {
+  totalPrice: 2000,
+  createDate: now,
+  status: '完了',
+  amount: 1,
+  user: {
+   create: {
+     userName: 'testUserName_3',
+     email: 'testEmail_3',
+     authority: 0,
+     password: 'testPassword_3',
+   }
   },
-  {
-    name: 'Nilu',
-    email: 'nilu@prisma.io',
-    posts: {
-      create: [
-        {
-          title: 'Follow Prisma on Twitter',
-          content: 'https://www.twitter.com/prisma',
-          published: true,
-          viewCount: 42,
-        },
-      ],
-    },
+  item: {
+   create: {
+     itemName: 'testItemName_2',
+     detail: 'testDetail_2',
+     price: 2000,
+     shop: {
+       create: {
+         shopName: 'testshopName_2',
+         admin: {
+           create: {
+             userName: 'testUserName_4',
+             email: 'testEmail_4',
+             authority: 1,
+             password: 'testPassword_4',
+           }
+         },
+       },
+     },
+   },
   },
-  {
-    name: 'Mahmoud',
-    email: 'mahmoud@prisma.io',
-    posts: {
-      create: [
-        {
-          title: 'Ask a question about Prisma on GitHub',
-          content: 'https://www.github.com/prisma/prisma/discussions',
-          published: true,
-          viewCount: 128,
-        },
-        {
-          title: 'Prisma on YouTube',
-          content: 'https://pris.ly/youtube',
-        },
-      ],
-    },
-  },
-]
+ },
+] 
 
 async function main() {
   console.log(`Start seeding ...`)
-  for (const u of userData) {
-    const user = await prisma.user.create({
+  for (const u of orderData) {
+    const order = await prisma.order.create({
       data: u,
     })
-    console.log(`Created user with id: ${user.id}`)
+    console.log(`Created user with id: ${order.userId}`)
   }
   console.log(`Seeding finished.`)
 }

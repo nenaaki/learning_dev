@@ -8,21 +8,41 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts Post[]
+  userId          Int      @id @default(autoincrement())
+  userName        String
+  email           String   
+  authority       Int      @default(0)
+  password        String
+  orders          Order[]
+  shop            Shop?
 }
 
-model Post {
-  id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  title     String
-  content   String?
-  published Boolean  @default(false)
-  viewCount Int      @default(0)
-  author    User?    @relation(fields: [authorId], references: [id])
-  authorId  Int?
+model Item {
+  itemId          Int      @id @default(autoincrement())
+  price           Int      @default(0)
+  itemName        String
+  shop            Shop     @relation(fields: [shopId], references: [shopId])
+  shopId          Int
+  detail          String?
+  orders          Order[]
 }
 
+model Shop {
+  shopId          Int      @id @default(autoincrement())
+  shopName        String
+  admin           User     @relation(fields: [adminUserId], references: [userId])
+  adminUserId     Int      @unique
+  items           Item[]
+}
+
+model Order {
+  orderId         Int      @id @default(autoincrement())
+  user            User     @relation(fields: [userId], references: [userId])
+  userId          Int
+  totalPrice      Int      @default(0)
+  createDate      DateTime @default(now())
+  status          String   @default("processing")
+  item            Item     @relation(fields: [itemId], references: [itemId])
+  itemId          Int
+  amount          Int
+}

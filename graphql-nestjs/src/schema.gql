@@ -2,22 +2,30 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type User {
-  id: Int!
-  email: String!
-  name: String
-  posts: [Post!]
+type Shop {
+  shopId: Int!
+  shopName: String!
+  admin: User!
+  items: [Item!]
 }
 
-type Post {
-  id: Int!
-  createdAt: Timestamp!
-  updatedAt: Timestamp!
-  title: String!
-  content: String
-  published: Boolean
-  viewCount: Int!
-  author: User
+type Item {
+  itemId: Int!
+  price: Int!
+  itemName: String!
+  shop: Shop!
+  detail: String!
+  orders: [Order!]
+}
+
+type Order {
+  orderId: Int!
+  user: User!
+  totalPrice: Float!
+  createDate: Timestamp!
+  status: String!
+  item: Item!
+  amount: Int!
 }
 
 """
@@ -25,42 +33,19 @@ type Post {
 """
 scalar Timestamp
 
+type User {
+  userId: Int!
+  userName: String!
+  email: String!
+  authority: Int!
+  password: String!
+  orders: [Order!]
+  shop: Shop
+}
+
 type Query {
   allUsers: [User!]
-  draftsByUser(userUniqueInput: UserUniqueInput!): [Post!]
-  postById(id: Float!): Post
-  feed(searchString: String, skip: Float, take: Float, orderBy: PostOrderByUpdatedAtInput): [Post!]!
-}
-
-input UserUniqueInput {
-  id: Float
-  email: String
-}
-
-input PostOrderByUpdatedAtInput {
-  updatedAt: SortOrder!
-}
-
-enum SortOrder {
-  asc
-  desc
-}
-
-type Mutation {
-  signupUser(data: UserCreateInput!): User!
-  createDraft(data: PostCreateInput!, authorEmail: String!): Post!
-  incrementPostViewCount(id: Float!): Post!
-  togglePublishPost(id: Float!): Post
-  deletePost(id: Float!): Post
-}
-
-input UserCreateInput {
-  email: String!
-  name: String
-  posts: [PostCreateInput!]
-}
-
-input PostCreateInput {
-  title: String!
-  content: String
+  allItems: [Item!]
+  allShops: [Shop!]
+  allOrders: [Order!]
 }

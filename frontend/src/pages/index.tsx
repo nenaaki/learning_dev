@@ -7,8 +7,8 @@ import styles from "../styles/Home.module.css";
 
 type Props = {
   Post: {
-    id: number
-    title: String
+    userId: number
+    userName: String
   }[];
 };
 
@@ -23,15 +23,12 @@ const Home: NextPage<Props> = (props) => {
 
       <main className={styles.main}>
         <h1 className={styles.title}>Hello, GraphQL</h1>
-       <ul className={styles.grid}>
          {props.Post.map((post) => (
-           <li className={styles.title} key={post.id}>
-             id: {post.id} title: {post.title}
+           <li className={styles.title} key={post.userId}>
+             <p>id: {post.userId} title: {post.userName} </p>
            </li>
          ))}
-       </ul>
       </main>
-
       <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
@@ -54,9 +51,9 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
 
     const postsQuery = gql`
       query {
-        feed {
-          id
-          title          
+        allUsers {
+          userId,
+          userName      
         }
       }
     `;
@@ -64,7 +61,7 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
 
     return {
       props: {
-        Post: result.data.feed,
+        Post: result.data.allUsers,
       },
     };
   } catch (e) {
