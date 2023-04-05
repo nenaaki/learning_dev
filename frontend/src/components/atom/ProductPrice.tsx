@@ -4,7 +4,7 @@ export type ProductNameProps = {
   price: number;
 };
 
-export const ProductName: React.FC<ProductNameProps> = (props) => {
+export const ProductPrice: React.FC<ProductNameProps> = (props) => {
   const {price} = props;
   return (
     <div>
