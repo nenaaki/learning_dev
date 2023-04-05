@@ -1,5 +1,5 @@
-import { ProductList } from "@/components/templates/ProductList";
-import { ProductCardProps } from "@/components/organisms/ProductCard"
+import { ProductList } from "@/components/organisms/ProductList";
+import { ProductCardProps } from "@/components/molecules/ProductCard"
 import gql from "graphql-tag";
 import type { GetServerSideProps, NextPage } from "next";
 import { urqlClient } from "../../../libs/gql-requests";

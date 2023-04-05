@@ -1,4 +1,4 @@
-import { ProductCard, ProductCardProps } from "../organisms/ProductCard";
+import { ProductCard, ProductCardProps } from "../molecules/ProductCard";
 
 export type ProductListProps = {
   products: ProductCardProps[];

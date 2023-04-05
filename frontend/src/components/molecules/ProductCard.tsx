@@ -1,4 +1,5 @@
 import { ProductName } from '../atom/ProductName';
+import { ProductPrice } from '../atom/ProductPrice';
 
 export type ProductCardProps = {
   name: string;
@@ -6,11 +7,10 @@ export type ProductCardProps = {
 };
 
 export const ProductCard: React.FC<ProductCardProps> = (props) => {
-  const {name, price} = props;
   return (
     <div>
-      <ProductName {...props}/>
-      <p>{price}</p>
+      <ProductName name={props.name}/>
+      <ProductPrice {...props}/>
     </div>
   );
 };
