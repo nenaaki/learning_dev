@@ -39,7 +39,7 @@ export const getServerSideProps: GetServerSideProps<ShopProps> = async (ctx) => 
     return {
       props: {
         name: result.data.Shop.name,
-        products: [],
+        products: [], // クエリー結果を入れる
       },
     };
   } catch (e) {

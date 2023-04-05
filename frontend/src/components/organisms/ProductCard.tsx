@@ -9,7 +9,7 @@ export const ProductCard: React.FC<ProductCardProps> = (props) => {
   const {name, price} = props;
   return (
     <div>
-      <ProductName name/>
+      <ProductName {...props}/>
       <p>{price}</p>
     </div>
   );
