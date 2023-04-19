@@ -45,7 +45,9 @@ type User {
 
 type Query {
   allUsers: [User!]
+  UniqueUser(id: Float!): User
   allItems: [Item!]
   allShops: [Shop!]
   allOrders: [Order!]
+  UniqueOrder(id: Float!): Order
 }

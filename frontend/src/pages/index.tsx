@@ -4,7 +4,29 @@ import Head from "next/head";
 import Image from "next/image";
 import { urqlClient } from "../libs/gql-requests";
 import styles from "../styles/Home.module.css";
+import * as React from 'react';
+import { ChakraProvider } from '@chakra-ui/react'  
+import { ChakraBaseProvider, extendBaseTheme } from '@chakra-ui/react'
+// `@chakra-ui/theme` is a part of the base install with `@chakra-ui/react`
+import chakraTheme from '@chakra-ui/theme'
 
+const { Button } = chakraTheme.components
+
+const theme = extendBaseTheme({
+  components: {
+    Button,
+  },
+})
+
+{/*  一行コメント
+function App() {
+  return (
+    <ChakraBaseProvider theme={theme}>
+      <Component {...pageProps} />
+    </ChakraBaseProvider>
+  )
+}
+*/}
 type Props = {
   Post: {
     userId: number

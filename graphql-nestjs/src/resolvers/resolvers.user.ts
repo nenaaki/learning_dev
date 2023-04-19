@@ -16,15 +16,6 @@ import { PrismaService } from '../prisma.service'
 import { Order } from '@prisma/client'
 import { Item } from 'src/models/item'
 
-@InputType()
-class UserUniqueInput {
-  @Field({ nullable: true })
-  id: number
-
-  @Field({ nullable: true })
-  email: string
-}
-
 @Resolver(User)
 export class UserResolver {
   constructor(@Inject(PrismaService) private prismaService: PrismaService) {}
@@ -33,4 +24,16 @@ export class UserResolver {
   async allUsers(@Context() ctx) {
     return this.prismaService.user.findMany()
   }
+
+  @Query((returns) => User, { nullable: true})
+  async UniqueUser(@Args('id')id: number){
+    return await this.prismaService.user.findUnique(
+      {
+        where: {
+          userId: id
+        }
+      }
+    )
+  }
 }
+

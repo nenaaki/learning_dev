@@ -17,15 +17,6 @@ import { Order } from '@prisma/client'
 import { Item } from 'src/models/item'
 import { Shop } from 'src/models/shop'
 
-@InputType()
-class UserUniqueInput {
-  @Field({ nullable: true })
-  id: number
-
-  @Field({ nullable: true })
-  email: string
-}
-
 @Resolver(Shop)
 export class ShopResolver {
   constructor(@Inject(PrismaService) private prismaService: PrismaService) {}

@@ -1,26 +1,2 @@
 token
-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
-
- userName: 'testUserName_1',
-	  email: 'testEmail_1',
-	  authority: 1,
-	  password: 'testPassword_1',
-    shop: {
-      create: {
-        shopName: 'testshopName_1',
-        items: {
-          create: [
-            {
-              price: 1000,
-              itemName: 'testItemName_1',
-              detail: 'testDetail_1',
-            },
-            {
-              price: 1500,
-					    itemName: 'testItemName_2',
-			    		detail: 'testDetail_2',
-            }
-          ]
-        }
-      }
-    },
+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
