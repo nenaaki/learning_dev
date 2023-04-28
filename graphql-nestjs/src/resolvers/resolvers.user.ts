@@ -25,6 +25,7 @@ export class UserResolver {
     return this.prismaService.user.findMany()
   }
 
+  //Relationを書く
   @Query((returns) => User, { nullable: true})
   async UniqueUser(@Args('id')id: number){
     return await this.prismaService.user.findUnique(

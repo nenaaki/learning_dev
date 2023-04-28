@@ -3,6 +3,7 @@ import { ObjectType, Field, Int } from '@nestjs/graphql'
 import { User } from './user'
 import { Item } from './item'
 
+//@Relation()を書く
 @ObjectType()
 export class Shop {
   @Field((type) => Int)
