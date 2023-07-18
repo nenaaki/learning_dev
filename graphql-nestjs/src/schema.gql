@@ -7,6 +7,7 @@ type Shop {
   shopName: String!
   admin: User!
   items: [Item!]
+  shopItems: [Item!]!
 }
 
 type Item {
@@ -21,6 +22,7 @@ type Item {
 type Order {
   orderId: Int!
   user: User!
+  userId: Int!
   totalPrice: Float!
   createDate: Timestamp!
   status: String!
@@ -41,13 +43,15 @@ type User {
   password: String!
   orders: [Order!]
   shop: Shop
+  userOrders: [Order!]!
 }
 
 type Query {
   allUsers: [User!]
-  UniqueUser(id: Float!): User
+  uniqueUser(id: Float!): User
   allItems: [Item!]
   allShops: [Shop!]
+  uniqueShop(id: Float!): Shop
   allOrders: [Order!]
-  UniqueOrder(id: Float!): Order
+  uniqueOrder(id: Float!): Order
 }

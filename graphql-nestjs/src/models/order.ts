@@ -11,6 +11,9 @@ export class Order {
   @Field((type) => User)
   user?: User
 
+  @Field((type) => Int)
+  userId?: number
+
   @Field()
   totalPrice: number
 

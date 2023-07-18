@@ -9,6 +9,7 @@ import {
   Root,
   InputType,
   Field,
+  Parent
 } from '@nestjs/graphql'
 import { Inject } from '@nestjs/common'
 import { User } from '../models/user'
@@ -23,6 +24,28 @@ export class ShopResolver {
 
   @Query((returns) => [Shop], { nullable: true })
   async allShops(@Context() ctx) {
-    return this.prismaService.shop.findMany()
+    return await this.prismaService.shop.findMany()
+  }
+
+  @ResolveField((returns) => [Item])
+  async shopItems(@Parent() shop: Shop ): Promise<Item[] | null> {
+    return await this.prismaService.item.findMany(
+      {
+        where: {
+          shopId: shop.shopId
+        }
+      }
+    )
+  }
+
+  @Query((returns) => Shop, { nullable: true })
+  async uniqueShop(@Args('id')id: number){
+    return await this.prismaService.shop.findUnique(
+      {
+        where: {
+          shopId: id
+        }
+      }
+    )
   }
 }
