@@ -16,5 +16,5 @@ export class Shop {
   admin?: User
 
   @Field((type) => [Item], { nullable: true })
-  items?: [Item] | null
+  items?: Item[] | null
 }

@@ -23,7 +23,7 @@ export class User {
   password: string
 
   @Field((type) => [Order], { nullable: true })
-  orders?: [Order] | null
+  orders?: Order[] | null
 
   @Field((type) => Shop, { nullable: true })
   shop?: Shop | null

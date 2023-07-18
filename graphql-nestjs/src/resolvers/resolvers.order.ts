@@ -26,7 +26,7 @@ export class OrderResolver {
   }
 
   @Query((returns) => Order, { nullable: true})
-  async UniqueOrder(@Args('id')id: number){
+  async uniqueOrder(@Args('id')id: number){
     return await this.prismaService.order.findUnique(
       {
         where: {
