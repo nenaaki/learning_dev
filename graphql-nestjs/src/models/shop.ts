@@ -3,6 +3,7 @@ import { ObjectType, Field, Int } from '@nestjs/graphql'
 import { User } from './user'
 import { Item } from './item'
 
+//@Relation()を書く
 @ObjectType()
 export class Shop {
   @Field((type) => Int)
@@ -15,5 +16,5 @@ export class Shop {
   admin?: User
 
   @Field((type) => [Item], { nullable: true })
-  items?: [Item] | null
+  items?: Item[] | null
 }

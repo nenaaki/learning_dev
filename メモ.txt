@@ -1,2 +1,7 @@
 token
 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
+
+
+画面側
+　atom
+  

@@ -8,9 +8,9 @@ import { OrderResolver } from './resolvers/resolvers.order'
 import { join } from 'path'
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
 import { Item } from './models/item';
-import { User } from './models/User';
+import { User } from './models/user';
 import { Order } from './models/order';
-import { Shop } from './models/Shop';
+import { Shop } from './models/shop';
 
 @Module({
   imports: [
