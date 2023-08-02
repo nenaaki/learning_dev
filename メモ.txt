@@ -2,6 +2,42 @@ token
 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
 
 
+環境開発基礎
+https://zenn.dev/mano_r/articles/8d25be4b4452dd
+
+https://tech.stmn.co.jp/entry/2022/04/07/145210
+
+
+構成を最初に考えるべき
+
+バックエンド
+graphql参考
+https://docs.nestjs.com/graphql/quick-start
+
+nesj学習用
+https://dev.classmethod.jp/articles/complete-nextjs-tutorial/
+
+DB接続
+https://zenn.dev/waddy/books/graphql-nestjs-nextjs-bootcamp/viewer/nestjs_prisma_local
+
+DBの構成でやれることの範囲が決まる
+
+データベースのリレーションの張り方に注意、Prismaのでーたのとり方に癖がある
+Prismaセットアップ
+https://spice-factory.co.jp/web/about-atmicdesign/
+
 画面側
-　atom
-  
+
+nextのドキュメント
+https://nextjs.org/docs
+
+　Atomic Design
+https://spice-factory.co.jp/web/about-atmicdesign/
+べた書きから分解するように書き下していく
+
+graphQLフロント側
+https://zenn.dev/waddy/books/graphql-nestjs-nextjs-bootcamp/viewer/nextjs
+
+・注意点
+DB接続
+https://zenn.dev/waddy/books/graphql-nestjs-nextjs-bootcamp/viewer/nestjs_prisma_local

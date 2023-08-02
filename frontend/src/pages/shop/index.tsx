@@ -1,28 +1,25 @@
 import gql from "graphql-tag";
 import type { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
-import Image from "next/image";
-import { urqlClient } from "../libs/gql-requests";
+import { urqlClient } from "../../libs/gql-requests";
 import * as React from 'react';
 import { Box, ChakraProvider, Heading, Stack, StackDivider } from '@chakra-ui/react'  
-import { ChakraBaseProvider, extendBaseTheme } from '@chakra-ui/react'
-import { Button, VStack } from '@chakra-ui/react';
-import chakraTheme from '@chakra-ui/theme'
-import theme from "../components/atoms/theme";
-import PrimaryButton from "../components/molecules/PrimaryButton";
-import ButtonGroup from "../components/organisms/ButtonGroup";
-import { extendTheme } from "@chakra-ui/react";
-import { UserId } from "@/components/molecules/UserId";
+import theme from "../../components/atoms/theme";
+import PrimaryButton from "../../components/molecules/PrimaryButton";
+import ButtonGroup from "../../components/organisms/ButtonGroup";
+import { ShopId } from "@/components/molecules/ShopId";
 import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
 
 type Props = {
-  Post: {
-    userId: number
-    userName: String
+  shops: {
+    shopId: number
+    shopName: String
   }[];
 };
 
 const Home: NextPage<Props> = (props) => {
+  const { shops } = props;
+  console.warn(props);
   return (
     <ChakraProvider theme = {theme}>
     <div>
@@ -34,18 +31,18 @@ const Home: NextPage<Props> = (props) => {
 
       <main>
       <h1>Hello, GraphQL</h1>
-        {props.Post.map(({userId, userName}) => (
+        {props.shops.map(({shopId, shopName}) => (
           <Card margin='50px'>
             <CardHeader background='red' margin='50px' rounded="10">
               <Heading size='md' color='white'>
-                <UserId userId={userId.toString()}/>
+                <ShopId shopId={shopId.toString()}/>
               </Heading>
             </CardHeader>
 
             <CardBody>
               <Stack divider={<StackDivider />} spacing='4'>
                 <Box>
-                  ユーザー名: {userName}
+                  店舗名: {shopName}
                 </Box>
               </Stack>
             </CardBody>
@@ -72,20 +69,19 @@ const Home: NextPage<Props> = (props) => {
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
   try {
     const client = await urqlClient();
-
     const postsQuery = gql`
       query {
-        allUsers {
-          userId,
-          userName
+        allShops {
+          shopId,
+          shopName
         }
       }
     `;
     const result = await client.query(postsQuery, {}).toPromise();
-
+    //console.warn(result.data.allShops);
     return {
       props: {
-        Post: result.data.allUsers,
+        shops: result.data.allShops,
       },
     };
   } catch (e) {
