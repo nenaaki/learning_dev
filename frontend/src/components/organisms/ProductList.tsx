@@ -7,8 +7,8 @@ export type ProductListProps = {
 export const ProductList: React.FC<ProductListProps> = (props) => {
   const {products} = props;
   console.warn(products);
-  const list = products.map((product) => 
-    <div>
+  const list = products.map((product, index) => 
+    <div key={index}>
       <ProductCard {...product} />
     </div>
   )

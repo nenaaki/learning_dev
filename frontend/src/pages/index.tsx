@@ -34,8 +34,8 @@ const Home: NextPage<Props> = (props) => {
 
       <main>
       <h1>Hello, GraphQL</h1>
-        {props.Post.map(({userId, userName}) => (
-          <Card margin='50px'>
+        {props.Post.map(({userId, userName}, index) => (
+          <Card margin='50px' key={index}>
             <CardHeader background='red' margin='50px' rounded="10">
               <Heading size='md' color='white'>
                 <UserId userId={userId.toString()}/>

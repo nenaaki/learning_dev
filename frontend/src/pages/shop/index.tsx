@@ -31,8 +31,8 @@ const Home: NextPage<Props> = (props) => {
 
       <main>
       <h1>Hello, GraphQL</h1>
-        {props.shops.map(({shopId, shopName}) => (
-          <Card margin='50px'>
+        {props.shops.map(({shopId, shopName}, index) => (
+          <Card margin='50px' key={index}>
             <CardHeader background='red' margin='50px' rounded="10">
               <Heading size='md' color='white'>
                 <ShopId shopId={shopId.toString()}/>
