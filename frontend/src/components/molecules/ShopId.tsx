@@ -8,8 +8,7 @@ export const ShopId: React.FC<ShopIdProps> = (props) => {
   const { shopId } = props;
   return (
     <HStack>
-      <Text fontSize='2xs'>Id: </Text>
-      <Text fontSize='2xl'>{shopId}</Text>
+      <Text>店舗Id: {shopId}</Text>
     </HStack>
   );
 };

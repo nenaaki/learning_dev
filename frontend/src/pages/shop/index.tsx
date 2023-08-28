@@ -8,12 +8,16 @@ import theme from "../../components/atoms/theme";
 import PrimaryButton from "../../components/molecules/PrimaryButton";
 import ButtonGroup from "../../components/organisms/ButtonGroup";
 import { ShopId } from "@/components/molecules/ShopId";
-import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'
+import { Card, CardHeader, CardBody, CardFooter, Link, defineStyle } from '@chakra-ui/react'
 
 type Props = {
   shops: {
     shopId: number
     shopName: String
+    shopItems: {
+      itemName: String
+      price: number
+    }[]
   }[];
 };
 
@@ -30,34 +34,38 @@ const Home: NextPage<Props> = (props) => {
       </Head>
 
       <main>
-      <h1>Hello, GraphQL</h1>
-        {props.shops.map(({shopId, shopName}, index) => (
+      <h1>店舗一覧</h1>
+        {props.shops.map(({shopId, shopName, shopItems}, index) => (
           <Card margin='50px' key={index}>
-            <CardHeader background='red' margin='50px' rounded="10">
+            <CardHeader background='Lightblue' margin='10px' rounded="10" padding='10px'>
               <Heading size='md' color='white'>
-                <ShopId shopId={shopId.toString()}/>
+                <Link href={`/shop/${shopId}`}>
+                  <ShopId shopId={shopId.toString()}/>
+                  <Box>
+                    店舗名: {shopName}
+                  </Box>
+                </Link>
               </Heading>
             </CardHeader>
 
             <CardBody>
-              <Stack divider={<StackDivider />} spacing='4'>
-                <Box>
-                  店舗名: {shopName}
-                </Box>
+            <Box>
+              <Stack divider={<StackDivider />} spacing='1'>
+              <Box>
+                  店舗詳細: 店舗の詳細を記述してください
+              </Box>
+              {shopItems.map(({itemName, price}) => (
+                <Card>
+                  <Box>商品名：{itemName}</Box>
+                  <Box>値段：{price}</Box>
+                  商品詳細：
+                </Card>
+              ))}  
               </Stack>
+            </Box>
             </CardBody>
           </Card>
         ))}
-        <input type="button" value="inputのボタン"></input>
-        {/* ref="http://localhost:3000/shop/1" */}
-        <div>
-          <PrimaryButton>Click me</PrimaryButton>
-          <ButtonGroup name=''>
-            <PrimaryButton>Button 1</PrimaryButton>
-            <PrimaryButton>Button 2</PrimaryButton>
-            <PrimaryButton>Button 3</PrimaryButton>
-          </ButtonGroup>
-        </div>
       </main>
       <footer>
       </footer>
@@ -73,12 +81,17 @@ export const getServerSideProps: GetServerSideProps<Props> = async () => {
       query {
         allShops {
           shopId,
-          shopName
+          shopName,
+          shopItems {
+            itemName,
+            price
+          }
         }
       }
     `;
     const result = await client.query(postsQuery, {}).toPromise();
-    //console.warn(result.data.allShops);
+    console.warn(result.data.allShops);
+    console.warn(result.data.allShops[0].shopItems);
     return {
       props: {
         shops: result.data.allShops,
