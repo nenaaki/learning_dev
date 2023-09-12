@@ -2,9 +2,15 @@
   "name": "learning_dev",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "graphql-nestjs"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "run-p dev:*",
+    "dev:graphql-nestjs":  "yarn workspace graphql-nestjs dev",
+    "dev:frontend": "yarn workspace frontend dev"
   },
   "repository": {
     "type": "git",
@@ -17,6 +23,7 @@
   },
   "homepage": "https://github.com/hirokiseki/learning_dev#readme",
   "devDependencies": {
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "npm-run-all": "^4.1.5"
   }
 }
