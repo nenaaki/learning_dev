@@ -9,7 +9,7 @@ export const ProductName: React.FC<ProductNameProps> = (props) => {
   const {name} = props;
   return (
     <div>
-      <Text fontSize='2xl'>{name}</Text>
+      <Text fontSize='xl'>{name}</Text>
     </div>
   );
 };

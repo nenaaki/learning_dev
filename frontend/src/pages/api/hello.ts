@@ -1,13 +1,18 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
+import { Box, HStack } from "@chakra-ui/react"
 
-type Data = {
-  name: string
-}
 
-export default function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
-  res.status(200).json({ name: 'John Doe' })
+
+const Sample : React.FC<> = (props) => {
+    const boxSize = {
+        w: "40px",
+        h: "40px"
+    }
+    return(
+       <HStack>
+           <Box>hoge</Box>
+           <Box sx={boxSize} bgColor="blue">huga</Box>
+           <Box sx={boxSize} bgColor="yellow">piyo</Box>
+       </HStack>
+    )
 }
+export default Sample

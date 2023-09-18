@@ -1,8 +1,13 @@
 import { ProductList } from "@/components/organisms/ProductList";
 import { ProductCardProps } from "@/components/molecules/ProductCard"
+
 import gql from "graphql-tag";
 import type { GetServerSideProps, NextPage } from "next";
 import { urqlClient } from "../../../libs/gql-requests";
+import { Flex, Spacer, Center, Text, Square ,Box, CardHeader, Heading } from '@chakra-ui/react'
+import Title from "@/components/atoms/Title";
+import ShopInfo from "@/components/atoms/ShopInfo";
+
 
 type ShopProps = {
   name: string;
@@ -13,13 +18,13 @@ type ShopProps = {
 const ShopDetail: NextPage<ShopProps> = (props) => {
   const {name,id,products} = props;
   return (
-    <>
+    <main>
+      <Title>店舗情報</Title>
+      <ShopInfo shopId={id} shopName={name}></ShopInfo>
       <div>
-        {id}
-        {name}
         <ProductList products={products}/>
       </div>
-    </>
+    </main>
   );
 };
 

@@ -9,6 +9,7 @@ import PrimaryButton from "../../components/molecules/PrimaryButton";
 import ButtonGroup from "../../components/organisms/ButtonGroup";
 import { ShopId } from "@/components/molecules/ShopId";
 import { Card, CardHeader, CardBody, CardFooter, Link, defineStyle } from '@chakra-ui/react'
+import Title from "@/components/atoms/Title";
 
 type Props = {
   shops: {
@@ -34,7 +35,7 @@ const Home: NextPage<Props> = (props) => {
       </Head>
 
       <main>
-      <h1>店舗一覧</h1>
+      <Title>店舗一覧</Title>
         {props.shops.map(({shopId, shopName, shopItems}, index) => (
           <Card margin='50px' key={index}>
             <CardHeader background='Lightblue' margin='10px' rounded="10" padding='10px'>
