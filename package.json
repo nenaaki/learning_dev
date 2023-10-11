@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "private": true,
-  "workspaces": [
-    "frontend",
-    "graphql-nestjs"
-  ],
+  "workspaces": {
+    "packages": [
+      "frontend",
+      "graphql-nestjs"
+    ],
+    "nohoist": ["**/@nestjs", "**/@nestjs/**"]
+  },
   "scripts": {
     "dev": "run-p dev:*",
     "dev:graphql-nestjs":  "yarn workspace graphql-nestjs dev",
