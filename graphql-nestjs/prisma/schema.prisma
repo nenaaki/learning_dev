@@ -15,6 +15,7 @@ model User {
   password        String
   orders          Order[]
   shop            Shop?
+  owners          Owner[]
 }
 
 model Item {
@@ -33,6 +34,7 @@ model Shop {
   admin           User     @relation(fields: [adminUserId], references: [userId])
   adminUserId     Int      @unique
   items           Item[]
+  owners          Owner[]
 }
 
 model Order {
@@ -45,4 +47,12 @@ model Order {
   item            Item     @relation(fields: [itemId], references: [itemId])
   itemId          Int
   amount          Int
+}
+
+model Owner {
+  id              Int      @id @default(autoincrement())
+  shop            Shop     @relation(fields: [shopId], references: [shopId])
+  shopId          Int
+  user            User     @relation(fields: [userId], references: [userId])
+  userId          Int
 }
