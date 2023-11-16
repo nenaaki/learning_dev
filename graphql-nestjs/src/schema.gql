@@ -46,6 +46,10 @@ type User {
   userOrders: [Order!]!
 }
 
+type Token {
+  token: String
+}
+
 type Query {
   allUsers: [User!]
   uniqueUser(id: Float!): User
@@ -54,4 +58,5 @@ type Query {
   uniqueShop(id: Float!): Shop
   allOrders: [Order!]
   uniqueOrder(id: Float!): Order
+  login(userId: String!, password: String!): Token
 }

@@ -38,5 +38,10 @@ CREATE TABLE "Order" (
     CONSTRAINT "Order_itemId_fkey" FOREIGN KEY ("itemId") REFERENCES "Item" ("itemId") ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
+-- CreateTable
+CREATE TABLE "Orner" (
+    "Id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT
+);
+
 -- CreateIndex
 CREATE UNIQUE INDEX "Shop_adminUserId_key" ON "Shop"("adminUserId");

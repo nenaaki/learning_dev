@@ -7,3 +7,6 @@ npx try-prisma --template typescript/graphql-nestjs
 
 DBの作成
 npx prisma migrate dev --name init
+
+テーブルの中身を見る
+  npx prisma studio

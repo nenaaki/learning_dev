@@ -41,3 +41,16 @@ https://zenn.dev/waddy/books/graphql-nestjs-nextjs-bootcamp/viewer/nextjs
 ・注意点
 DB接続
 https://zenn.dev/waddy/books/graphql-nestjs-nextjs-bootcamp/viewer/nestjs_prisma_local
+
+
+
+とりあえず引っかかったら　yarn build
+
+
+
+node_moduleを削除して一番topでyarn install
+
+
+
+wrapで折り返して並べられる
+

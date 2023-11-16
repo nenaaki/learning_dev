@@ -11,11 +11,12 @@ import {
   Field,
   Parent
 } from '@nestjs/graphql'
-import { Inject } from '@nestjs/common'
+import { Inject, UseGuards } from '@nestjs/common'
 import { User } from '../models/user'
 import { Order } from '../models/order'
 import { PrismaService } from '../prisma.service'
 import { Item } from 'src/models/item'
+import { Roles } from 'src/decorators/decorator'
 
 
 @Resolver(User)

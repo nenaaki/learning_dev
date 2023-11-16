@@ -2,15 +2,15 @@ import gql from "graphql-tag";
 import type { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { urqlClient } from "../libs/gql-requests";
+import { urqlClient } from "../src/libs/gql-requests";
 import * as React from 'react';
 import { Box, ChakraProvider, Heading, Stack, StackDivider } from '@chakra-ui/react'  
 import { ChakraBaseProvider, extendBaseTheme } from '@chakra-ui/react'
 import { Button, VStack } from '@chakra-ui/react';
 import chakraTheme from '@chakra-ui/theme'
-import theme from "../components/atoms/theme";
-import PrimaryButton from "../components/molecules/PrimaryButton";
-import ButtonGroup from "../components/organisms/ButtonGroup";
+import theme from "../src/components/atoms/theme";
+import PrimaryButton from "../src/components/molecules/PrimaryButton";
+import ButtonGroup from "../src/components/organisms/ButtonGroup";
 import { extendTheme } from "@chakra-ui/react";
 import { UserId } from "@/components/molecules/UserId";
 import { Card, CardHeader, CardBody, CardFooter } from '@chakra-ui/react'

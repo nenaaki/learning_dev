@@ -17,11 +17,13 @@ import { PrismaService } from '../prisma.service'
 import { Order } from '@prisma/client'
 import { Item } from 'src/models/item'
 import { Shop } from 'src/models/shop'
+import { Roles } from 'src/decorators/decorator'
 
 @Resolver(Shop)
 export class ShopResolver {
   constructor(@Inject(PrismaService) private prismaService: PrismaService) {}
 
+  @Roles("admin")
   @Query((returns) => [Shop], { nullable: true })
   async allShops(@Context() ctx) {
     return await this.prismaService.shop.findMany()
